@@ -1,7 +1,7 @@
 # Web App From Scratch @cmda-minor-web 18-19
 
 <!-- Add a link to your live demo in Github Pages 🌐-->
-Live link: https://mennauu.github.io/web-app-from-scratch-18-19/
+Live link week 1: https://mennauu.github.io/web-app-from-scratch-18-19/week1
 
 <!-- ☝️ replace this description with a description of your own work -->
 
