@@ -6,7 +6,7 @@ A Pokédex that shows all the Pokemons. It currently displays these properties: 
 <!-- Add a link to your live demo in Github Pages 🌐-->
 [Live link](https://mennauu.github.io/web-app-from-scratch-18-19/week1)
 <!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
-![week1](week1/public/images/week1.png)
+![week1](week1/public/images/preview.png)
 
 **Week 2:**
 
