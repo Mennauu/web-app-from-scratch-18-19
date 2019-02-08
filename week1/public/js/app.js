@@ -1,27 +1,24 @@
 'use strict'
 
-const listContainer = document.querySelector('.list-container')
-const main = document.querySelector('main')
-
-async function getName() {
+async function getData() {
+  const listContainer = document.querySelector('.list-container')
 
   // Get data in JSON
-  let response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')
-  let data = await response.json()
+  const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')
+  const data = await response.json()
 
-  // Add data to html
   data.results.forEach(results => {
 
-    async function getData() {
-      let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${results.name}/`)
-      let data = await response.json()
+    async function getDetailedData() {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${results.name}/`)
+      const data = await response.json()
 
-      let allTypes = data.types.map(value => {
+      const allTypes = data.types.map(value => {
         return `<small class="type ${value.type.name}">${value.type.name}</small>`
       }).join(" ")
 
-    listContainer.innerHTML += 
-      `<a href="#${results.name}" class="result">
+      listContainer.innerHTML +=
+        `<a href="#${results.name}" class="result">
         <li>
           <div class="result-image">
             <img src="${data.sprites.front_default}" alt="${results.name}">
@@ -35,11 +32,11 @@ async function getName() {
        </a>`
     }
 
-    getData()
+    getDetailedData()
   })
 }
 
-getName()
+getData()
 
 // routie({
 //   '': function() {
