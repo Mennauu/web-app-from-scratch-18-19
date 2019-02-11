@@ -13,23 +13,24 @@ async function getData() {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${results.name}/`)
       const data = await response.json()
 
+
       const allTypes = data.types.map(value => {
         return `<small class="type ${value.type.name}">${value.type.name}</small>`
       }).join(" ")
 
       listContainer.innerHTML +=
         `<a href="#${results.name}" class="result">
-        <li>
-          <div class="result-image">
-            <img src="${data.sprites.front_default}" alt="${results.name}">
-          </div>
-          <div class="result-info">
-            <small class="pokemon-id">#${data.id}</small>
-            <span>${results.name}</span>
-            ${allTypes}
-          </div>
-        </li>
-       </a>`
+          <li>
+            <div class="result-image">
+              <img src="${data.sprites.front_default}" alt="${results.name}">
+            </div>
+            <div class="result-info">
+              <small class="pokemon-id">#${data.id}</small>
+              <span>${results.name}</span>
+              ${allTypes}
+            </div>
+          </li>
+        </a>`
     }
 
     getDetailedData()
