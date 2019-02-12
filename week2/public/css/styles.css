@@ -19,7 +19,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-weight: normal;
+  font-weight: bold;
+}
+
+p { 
+  font-size: 1.2em; 
+  margin-top: 0;
 }
 
 a {
@@ -33,6 +38,10 @@ ul {
   margin: 0;
 }
 
+h1 {
+  font-size: 2.5rem;
+}
+
 .header {
   background-color: #cc0000;
   color: #fff;
@@ -41,6 +50,15 @@ ul {
 }
 
 .logo { max-height: 100px; }
+
+.container {
+  max-width: 980px;
+  margin: auto;
+}
+
+.container h1 {
+  margin: 1em 0;
+}
 
 .list-container {
   display: flex;
@@ -67,10 +85,17 @@ ul {
   background-color: #ededed;
   border-radius: 4px;
   padding: 0.2em;
+  max-width: 31.25em;
+}
+
+.list-container .result-image > img { height: 150px; }
+
+.list-container .result-image {
   text-align: center;
 }
 
-.result-image > img { height: 150px; }
+.list-container .result-info { padding: 0; }
+.result-info { padding: 0 1.5em; }
 
 .result-info span {
   font-weight: bold;
@@ -80,8 +105,33 @@ ul {
 }
 
 .result-info span::first-letter,
-.type::first-letter {
+.type::first-letter,
+h1::first-letter {
   text-transform: uppercase;
+}
+
+h1 > span {
+  color: #919191;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.big-image {
+  height: 500px;
+  image-rendering: pixelated;
+}
+
+.pokemon-details {
+  background-color: #30a7d7;
+  display: block;
+  padding: 1em;
+  border-radius: 4px;
 }
 
 /* Pokemon type Colors */
