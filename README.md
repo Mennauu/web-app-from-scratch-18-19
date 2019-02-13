@@ -1,6 +1,6 @@
-# Web App From Scratch @cmda-minor-web 18-19
+<h1 style="text-align: center;">Web App From Scratch @cmda-minor-web 18-19</h1>
 
-A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the [PokéAPI](https://pokeapi.co/).
+<p style="text-align: center;">A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the [PokéAPI](https://pokeapi.co/).</p>
 
 ![preview](week1/public/images/preview.png)
 
@@ -15,7 +15,7 @@ A Pokédex that shows all the Pokemons. It currently displays these properties: 
 **Week 3:**
 <!-- ☝️ replace this description with a description of your own work -->
 ## Introduction
-This Pokédex is made as part of a course from @cmda-minor-web 18-19. In this course I had to make a Web App without any framework or unnecessary libraries. The idea was to write as much Vanilla HTML, CSS and JavaScript as possible. The end product is a modular prototype for a single page Web App where data is retrieved from an external API.
+This Pokédex is made as part of a course from [@cmda-minor-web 18-19](https://github.com/cmda-minor-web/web-app-from-scratch-1819). In this course I had to make a Web App without any framework or unnecessary libraries. The idea was to write as much Vanilla HTML, CSS and JavaScript as possible. The end product is a modular prototype for a single page Web App where data is retrieved from an external API.
 
 <!-- Maybe a table of contents here? 📚 -->
 ## Table of Contents
@@ -50,7 +50,7 @@ git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 All the data used to create the Pokédex is taken from the [PokéAPI](pokeapi.co), which you can find at pokeapi.co. It serves over 17,000,000 API calls each month. It features almost all of the Pokémon data in one place.
 
 ### Retrieve
-In the code beneath the **async / await** method is used with a custom errorHandling function (so we don't have to use try{ } catch { }) to retrieve data from the PokeAPI asynchronous. The data gets fetched from the API and is converted to JSON.
+In the code beneath the **async / await** method is used with a custom errorHandling function (so we don't have to use a try and catch block) to retrieve data from the PokeAPI asynchronous. The data gets fetched from the API and is converted to JSON.
 
 ```Javascript
 const getPokemonURL = async () => {
@@ -83,29 +83,30 @@ The Pokédex features these properties taken from the API:
 - [X] Divide the functions into modules
 - [ ] Add a filter function
 - [ ] Add a sort function
+- [ ] Keep data available in a variable (or use LocalStorage)
 - [X] Write a README
 
 <!-- Maybe someone helped me 🤔-->
 ## Credits
-**Arash**: For helping me with error handling and great feedback.
+**Arash**: For helping me with error handling and great feedback and advice.
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
 
 ### API
-[PokéAPI](https://pokeapi.co/)
-[PokéAPI documentation](https://pokeapi.co/docs/v2.html)
+- [PokéAPI](https://pokeapi.co/)
+- [PokéAPI documentation](https://pokeapi.co/docs/v2.html)
 
 ### Router
-[Routie](http://projects.jga.me/routie/)
+- [Routie](http://projects.jga.me/routie/)
 
 ### Async and await
-[Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
-[The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
-[Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
+- [Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
+- [The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
+- [Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
 
 ### General JavaScript
-[JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
+- [JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
