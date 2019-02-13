@@ -2,17 +2,15 @@
 
 A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the [PokéAPI](https://pokeapi.co/).
 
+![preview](week1/public/images/preview.png)
+
 **Week 1:**
 <!-- Add a link to your live demo in Github Pages 🌐-->
 [Live link](https://mennauu.github.io/web-app-from-scratch-18-19/week1)
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
-![week1](week1/public/images/preview.png)
 
 **Week 2:**
 <!-- Add a link to your live demo in Github Pages 🌐-->
 [Live link](https://mennauu.github.io/web-app-from-scratch-18-19/week2)
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
-![week1](week2/public/images/preview.png)
 
 **Week 3:**
 <!-- ☝️ replace this description with a description of your own work -->
@@ -26,7 +24,7 @@ This Pokédex is made as part of a course from @cmda-minor-web 18-19. In this co
 - [Features](#interaction)
 - [Data](#data)
   - [Retrieve](#retrieve)
-- [To-do list](#to-do-list)
+- [Checklist](#checklist)
 - [Credits](#credits)
 - [Sources](#sources)
 - [License](#license)
@@ -49,30 +47,66 @@ git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 ## Data
+All the data used to create the Pokédex is taken from the [PokéAPI](pokeapi.co), which you can find at pokeapi.co. It serves over 17,000,000 API calls each month. It features almost all of the Pokémon data in one place.
 
-## Retrieve
-In the code beneath the **async / await** method is used to retrieve data from the PokeAPI. The data gets fetched from the API and is converted to JSON.
+### Retrieve
+In the code beneath the **async / await** method is used with a custom errorHandling function (so we don't have to use try{ } catch { }) to retrieve data from the PokeAPI asynchronous. The data gets fetched from the API and is converted to JSON.
 
 ```Javascript
-
+const getPokemonURL = async () => {
+  const [err, data]  = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')).json())
+  if(!data) throw err
+  
+  return data.results
+}
 ```
+
+### Featured data
+The Pokédex features these properties taken from the API:
+- **url:** Used to obtain data from a single pokemon
+- **image:** Sprite of pokemon
+- **id:** Unique id of pokemon
+- **name:** Name of pokemon
+- **type(s):** Each pokemon has one or two types, for example: flying and fire
+- **weight:** Weight of pokemon in kilograms
+- **height:** Height of pokemon in meters
+- **game-stats:** Pokemons have base stats in games; speed, attack, special-attack, defense, special-defense and hp
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
-- [x] Find an API of your interest
-- [x] Retrieve data from the API asynchronous. 
-- [x] Write a readme.md
+- [x] Find an API of interest
+- [x] Retrieve data from the API asynchronous
+- [x] Render data to HTML without using innerHTML
+- [X] Rewrite 'spaghetti' code to functions
+- [X] Create a detailpage using a [router](http://projects.jga.me/routie/))
+- [X] Style everything and make it responsive
+- [X] Divide the functions into modules
+- [ ] Add a filter function
+- [ ] Add a sort function
+- [X] Write a README
 
 <!-- Maybe someone helped me 🤔-->
 ## Credits
-**Arash**: For helping me with error handling and cleaning code
+**Arash**: For helping me with error handling and great feedback.
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
+
+### API
 [PokéAPI](https://pokeapi.co/)
 [PokéAPI documentation](https://pokeapi.co/docs/v2.html)
 
+### Router
+[Routie](http://projects.jga.me/routie/)
+
+### Async and await
+[Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
+[The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
+[Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
+
+### General JavaScript
+[JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
+
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
-
 See the LICENSE file for license rights and limitations (MIT).
