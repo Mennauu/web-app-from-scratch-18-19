@@ -1,6 +1,6 @@
-<h1 style="text-align: center;">Web App From Scratch @cmda-minor-web 18-19</h1>
+<h1 align="center">Web App From Scratch @cmda-minor-web 18-19</h1>
 
-<p style="text-align: center;">A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the [PokéAPI](https://pokeapi.co/).</p>
+<p align="center">A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the [PokéAPI](https://pokeapi.co/).</p>
 
 ![preview](week1/public/images/preview.png)
 
