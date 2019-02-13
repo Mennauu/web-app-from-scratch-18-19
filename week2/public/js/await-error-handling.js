@@ -1,7 +1,12 @@
-/*  By:     Steve Banton
-    Source: https://stackoverflow.com/a/49311904   */
+/* Alternative way to handle promise error handling
 
-export function catchError(promise) {
-  return promise.then(data => [null, data])
+  By: Steve Banton
+  Source: https://stackoverflow.com/a/49311904 
+*/
+const errorHandling = promise => {
+  return promise
+    .then(data => [null, data])
     .catch(err => [err])
 }
+
+export { errorHandling }

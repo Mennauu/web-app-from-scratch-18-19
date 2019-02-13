@@ -3,6 +3,7 @@
 import { setDataToHTML, setDetailedDataToHTML } from './set-data-to-html.js'
 
 routie({
+  // Homepage
   '': function() {
     const firstSection = document.querySelector('main > section')
     const HTMLMarkup = '<ul class="list-container"></ul>'
@@ -12,11 +13,11 @@ routie({
 
     setDataToHTML()
   },
-  ':name': function() {
+  // Detail page
+  ':name': function(name) {
     const firstSection = document.querySelector('main > section')
     while (firstSection.firstChild) firstSection.removeChild(firstSection.firstChild)
 
-    scroll(0,0)
-    setDetailedDataToHTML()
+    setDetailedDataToHTML(name)
   }
 })

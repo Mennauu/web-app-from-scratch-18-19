@@ -1,8 +1,30 @@
- *,
- *::before,
- *::after {
-   box-sizing: border-box;
- }
+/********************************
+***                           ***
+******      Stylesheet     ******
+***                           ***
+* Copyright (c) 2019 menno.work *
+*********************************/
+
+/********************************
+*      1. Custom properties     *
+*********************************/
+:root {
+  --white: #fff;
+  --black: #212529;
+  --light-gray: #ededed;
+  --gray: #919191;
+  --blue: #30a7d7;
+  --border-radius: 4px;
+}
+ 
+/********************************
+*          2. Basic             *
+*********************************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
  
 html { font-size: 16px; }
  
@@ -13,10 +35,18 @@ body {
    font-weight: 400;
    line-height: 1.5;
    color: #212529;
-   background-color: #fff;
-   height: 200vh;
+   background-color: var(--white);
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/********************************
+*        3. Typography          *
+*********************************/
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: bold;
@@ -29,28 +59,28 @@ p {
 
 a {
   text-decoration: none;
-  color: #000;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  color: var(--black);
 }
 
 h1 {
   font-size: 2.5rem;
 }
 
+/********************************
+*         4. Top Header         *
+*********************************/
 .header {
   background-color: #cc0000;
-  color: #fff;
+  color: var(--white);
   padding: 1em;
   text-align: center;
 }
 
 .logo { max-height: 100px; }
 
+/********************************
+*         5. Containers         *
+*********************************/
 .container {
   max-width: 980px;
   margin: auto;
@@ -66,13 +96,6 @@ h1 {
   padding: 1em;
 }
 
-.details {
-  display: none;
-  width: 500px;
-  height: 500px;
-  background-color: #000;
-}
-
 .result {
   flex: 1 0 15%;
   margin: 0.5em 0.5em 3em 0.5em;
@@ -82,10 +105,11 @@ h1 {
 .result:hover { transform: scale(1.05) }
 
 .result-image {
-  background-color: #ededed;
-  border-radius: 4px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
   padding: 0.2em;
   max-width: 31.25em;
+  max-height: 31.25em;
 }
 
 .list-container .result-image > img { height: 150px; }
@@ -106,12 +130,13 @@ h1 {
 
 .result-info span::first-letter,
 .type::first-letter,
-h1::first-letter {
+h1::first-letter,
+.pokemon-details small::first-letter {
   text-transform: uppercase;
 }
 
 h1 > span {
-  color: #919191;
+  color: var(--gray);
 }
 
 .text-center {
@@ -122,21 +147,56 @@ h1 > span {
   display: flex;
 }
 
+.d-flex > div {
+  flex: 1 0 50%;
+}
+
 .big-image {
-  height: 500px;
+  width: 100%;
   image-rendering: pixelated;
 }
 
 .pokemon-details {
-  background-color: #30a7d7;
-  display: block;
+  background-color: var(--blue);
+  display: flex;
+  flex-wrap: wrap;
   padding: 1em;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 }
 
+.pokemon-details small {
+  font-size: 1em;
+  color: var(--white);
+  display: block;
+}
+
+.pokemon-details ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pokemon-details ul:last-child {
+  padding: 1em;
+}
+
+.pokemon-weight {
+  flex-wrap: nowrap;
+  background-color: #EE8130;
+  border-radius: var(--border-radius);
+  padding: 1em;
+  width: 100%;
+}
+
+.pokemon-details li {
+  flex: 1 0 50%;
+}
+
+.pokemon-types {
+  margin: 2em 0;
+}
 /* Pokemon type Colors */
 .pokemon-id {
-  color: #919191;
+  color: var(--gray);
   margin-top: 0.8em;
   display: block;
   font-weight: bold;
@@ -144,11 +204,12 @@ h1 > span {
 
 .type {
   padding: 0.2em 1em;
-  color: #fff;
-  border-radius: 4px;
+  color: var(--white);
+  border-radius: var(--border-radius);
   display: inline-block;
 }
 
+/* Pokemon Type Colors */
 .normal { background-color: #A8A77A; }
 .fire { background-color: #EE8130; }
 .water { background-color: #6390F0; }

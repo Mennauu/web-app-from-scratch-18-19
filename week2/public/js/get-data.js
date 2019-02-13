@@ -1,15 +1,16 @@
-/* Fetch all Pokemon URL's */
+import { errorHandling } from './await-error-handling.js'
+
+/* Fetch all Pokemon URL's and covert to JSON */
 const getPokemonURL = async () => {
-  try {
-    const data = await (await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')).json()
-    return data.results
-  } catch (err) { 
-    alert( err) 
-  }
+  const [err, data]  = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=24')).json())
+  if(!data) throw err
+  
+  return data.results
 }
 
-/* Fetch all details per Pokemon based on given name */
-const getPokemonData = async () => {
+/* Fetch all details per Pokemon based on retrieved URL,
+   convert to JSON */
+const getPokemonData = async () => { 
   try {
     const pokemonURL = await getPokemonURL()
 
@@ -19,33 +20,17 @@ const getPokemonData = async () => {
 
     return await Promise.all(data)
   } catch (err) {
-    alert(err)
+    throw err
   }
 }
 
-/* Fetch data from one Pokemon (detail page) */
-const getSinglePokemonData = async () => {
-  try {
-    const pokemonURL = await getPokemonURL()
-    const data = pokemonURL.filter(result => { return `#${result.name}` == window.location.hash })
-    
-    return await (await fetch(data[0].url)).json()
-  } catch (err) {
-    alert(err)
-  }
+/* Fetch data from one Pokemon based on the 
+   window location hash (by Routie), convert to JSON */
+const getSinglePokemonData = async (name) => {
+  const [err, data] =  await errorHandling((await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json())
+  if(!data) throw err
+
+  return data
 }
 
-// /* Fetch single pokemon description */
-// const getSinglePokemonDescription = async () => {
-//   try {
-//     const data = await getSinglePokemonData()
-//     const descriptionURL = data.species.url
-
-//     console.log(descriptionURL)
-
-//   } catch (err) {
-//     alert(err)
-//   }
-// }
-
-export { getPokemonData, getSinglePokemonData}
+export { getPokemonData, getSinglePokemonData }
