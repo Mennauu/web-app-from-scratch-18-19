@@ -1,18 +1,21 @@
 <h1 align="center">Web App From Scratch @cmda-minor-web 18-19</h1>
 
-<p align="center">A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the [PokéAPI](https://pokeapi.co/).</p>
+<p align="center"><b>A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the <a href="https://pokeapi.co/">PokéAPI</a>.</b></p>
+
+<p align="center">
+  <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week1">
+    <img src="https://img.shields.io/npm/v/:week-1-green.svg" alt="week1">
+  </a>
+  <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week2">
+    <img src="https://img.shields.io/npm/l/:license-MIT-green.svg" alt="week2">
+  </a>
+  <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/:license-MIT-green.svg" alt="License">
+  </a>
+</p>
 
 ![preview](week1/public/images/preview.png)
 
-**Week 1:**
-<!-- Add a link to your live demo in Github Pages 🌐-->
-[Live link](https://mennauu.github.io/web-app-from-scratch-18-19/week1)
-
-**Week 2:**
-<!-- Add a link to your live demo in Github Pages 🌐-->
-[Live link](https://mennauu.github.io/web-app-from-scratch-18-19/week2)
-
-**Week 3:**
 <!-- ☝️ replace this description with a description of your own work -->
 ## Introduction
 This Pokédex is made as part of a course from [@cmda-minor-web 18-19](https://github.com/cmda-minor-web/web-app-from-scratch-1819). In this course I had to make a Web App without any framework or unnecessary libraries. The idea was to write as much Vanilla HTML, CSS and JavaScript as possible. The end product is a modular prototype for a single page Web App where data is retrieved from an external API.
