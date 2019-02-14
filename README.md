@@ -4,13 +4,16 @@
 
 <p align="center">
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week1">
-    <img src="https://img.shields.io/npm/v/:week-1-green.svg" alt="week1">
+    <img src="https://img.shields.io/badge/week-1-green.svg?style=flat-square" alt="week1">
   </a>
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week2">
-    <img src="https://img.shields.io/npm/l/:license-MIT-green.svg" alt="week2">
+    <img src="https://img.shields.io/badge/week-2-green.svg?style=flat-square" alt="week2">
+  </a>
+  <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week3">
+    <img src="https://img.shields.io/badge/week-3-red.svg?style=flat-square" alt="week3">
   </a>
   <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
-    <img src="https://img.shields.io/npm/l/:license-MIT-green.svg" alt="License">
+    <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License">
   </a>
 </p>
 
