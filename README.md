@@ -6,21 +6,21 @@
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week1">
     <img src="https://img.shields.io/badge/week-1-green.svg?style=flat-square" alt="week1">
   </a>
-  &nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week2">
     <img src="https://img.shields.io/badge/week-2-green.svg?style=flat-square" alt="week2">
   </a>
-  &nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week3">
     <img src="https://img.shields.io/badge/week-3-red.svg?style=flat-square" alt="week3">
   </a>
-  &nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License">
   </a>
-  &nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/thedaviddias/Front-End-Checklist/">
-    <img src="https://img.shields.io/badge/Front‑End_Checklist-followed-brightgreen.svg" alt="Front-end checklist">
+    <img src="https://img.shields.io/badge/Front‑End_Checklist-followed-brightgreen.svg?style=flat-square" alt="Front-end checklist">
   </a>
 </p> 
 
