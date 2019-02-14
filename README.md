@@ -6,16 +6,23 @@
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week1">
     <img src="https://img.shields.io/badge/week-1-green.svg?style=flat-square" alt="week1">
   </a>
+  &nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week2">
     <img src="https://img.shields.io/badge/week-2-green.svg?style=flat-square" alt="week2">
   </a>
+  &nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week3">
     <img src="https://img.shields.io/badge/week-3-red.svg?style=flat-square" alt="week3">
   </a>
+  &nbsp;&nbsp;
   <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License">
   </a>
-</p>
+  &nbsp;&nbsp;
+  <a href="https://github.com/thedaviddias/Front-End-Checklist/">
+    <img src="https://img.shields.io/badge/Front‑End_Checklist-followed-brightgreen.svg" alt="Front-end checklist">
+  </a>
+</p> 
 
 <br>
 
@@ -44,10 +51,10 @@ Some resources possess an emoticon to help you understand which type of content 
 - [Checklist](#checklist)
 - [Credits](#credits)
 - [Sources](#sources)
-  -[API](#api)
-  -[Router](#router)
-  -[Async and await](#async-and-await)
-  -[General JavaScript](#general-javascript)
+  - [API](#api)
+  - [Router](#router)
+  - [Async and await](#async-and-await)
+  - [General JavaScript](#general-javascript)
 - [License](#license)
 
 <!-- How about a section that describes how to install this project? 🤓 -->
@@ -115,19 +122,19 @@ The Pokédex features these properties taken from the API:
 ## Sources
 
 ### API
-- 🛠:[PokéAPI](https://pokeapi.co/)
-- 📖:[PokéAPI documentation](https://pokeapi.co/docs/v2.html)
+- 🛠: [PokéAPI](https://pokeapi.co/)
+- 📖: [PokéAPI documentation](https://pokeapi.co/docs/v2.html)
 
 ### Router
-- 🛠:[Routie](http://projects.jga.me/routie/)
+- 🛠: [Routie](http://projects.jga.me/routie/)
 
 ### Async and await
-- 📖:[Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
-- 📹:[The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
-- 📖:[Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
+- 📖: [Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
+- 📹: [The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
+- 📖: [Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
 
 ### General JavaScript
-- 📹:[JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
+- 📹: [JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
