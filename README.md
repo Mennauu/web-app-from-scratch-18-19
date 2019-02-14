@@ -17,22 +17,37 @@
   </a>
 </p>
 
+<br>
+
 ![preview](week1/public/images/preview.png)
+
+<br>
 
 <!-- ☝️ replace this description with a description of your own work -->
 ## Introduction
 This Pokédex is made as part of a course from [@cmda-minor-web 18-19](https://github.com/cmda-minor-web/web-app-from-scratch-1819). In this course I had to make a Web App without any framework or unnecessary libraries. The idea was to write as much Vanilla HTML, CSS and JavaScript as possible. The end product is a modular prototype for a single page Web App where data is retrieved from an external API.
 
+Some resources possess an emoticon to help you understand which type of content you may find:
+
+- 📖: Documentation or article
+- 🛠: Tool or library
+- 📹: Video
+
 <!-- Maybe a table of contents here? 📚 -->
 ## Table of Contents
 
 - [Installation](#installation)
-- [Features](#interaction)
+- [Features](#features)
 - [Data](#data)
   - [Retrieve](#retrieve)
+  - [Featured data](#featured-data)
 - [Checklist](#checklist)
 - [Credits](#credits)
 - [Sources](#sources)
+  -[API](#api)
+  -[Router](#router)
+  -[Async and await](#async-and-await)
+  -[General JavaScript](#general-javascript)
 - [License](#license)
 
 <!-- How about a section that describes how to install this project? 🤓 -->
@@ -46,7 +61,7 @@ cd /~path
 ```bash
 git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 ```
-4. Load any live server and serve index.html
+4. Load any [live server](https://www.npmjs.com/package/live-server) and serve index.html
 
 <!-- ...but how does one use this project? What are its features 🤔 -->
 ## Features
@@ -60,7 +75,7 @@ In the code beneath the **async / await** method is used with a custom errorHand
 
 ```Javascript
 const getPokemonURL = async () => {
-  const [err, data]  = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')).json())
+  const [err, data] = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')).json())
   if(!data) throw err
   
   return data.results
@@ -84,7 +99,7 @@ The Pokédex features these properties taken from the API:
 - [x] Retrieve data from the API asynchronous
 - [x] Render data to HTML without using innerHTML
 - [X] Rewrite 'spaghetti' code to functions
-- [X] Create a detailpage using a [router](http://projects.jga.me/routie/))
+- [X] Create a detailpage using a [router](http://projects.jga.me/routie/)
 - [X] Style everything and make it responsive
 - [X] Divide the functions into modules
 - [ ] Add a filter function
@@ -100,20 +115,20 @@ The Pokédex features these properties taken from the API:
 ## Sources
 
 ### API
-- [PokéAPI](https://pokeapi.co/)
-- [PokéAPI documentation](https://pokeapi.co/docs/v2.html)
+- 🛠:[PokéAPI](https://pokeapi.co/)
+- 📖:[PokéAPI documentation](https://pokeapi.co/docs/v2.html)
 
 ### Router
-- [Routie](http://projects.jga.me/routie/)
+- 🛠:[Routie](http://projects.jga.me/routie/)
 
 ### Async and await
-- [Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
-- [The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
-- [Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
+- 📖:[Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
+- 📹:[The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
+- 📖:[Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
 
 ### General JavaScript
-- [JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
+- 📹:[JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
-See the LICENSE file for license rights and limitations (MIT).
+See the [LICENSE file](https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE) for license rights and limitations (MIT).
