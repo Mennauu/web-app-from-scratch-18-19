@@ -1,14 +1,17 @@
 <h1 align="center">Web App From Scratch @cmda-minor-web 18-19</h1>
 
-<p align="center"><b>A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the <a href="https://pokeapi.co/">PokéAPI</a>.</b></p>
+<p align="center"><b>A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the <a href="https://pokeapi.co/">PokéAPI</a>.</b>
+</p>
+
+<br>
 
 <p align="center">
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week1">
-    <img src="https://img.shields.io/badge/week-1-green.svg?style=flat-square" alt="week1">
+    <img src="https://img.shields.io/badge/week-1-brightgreen.svg?style=flat-square" alt="week1">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week2">
-    <img src="https://img.shields.io/badge/week-2-green.svg?style=flat-square" alt="week2">
+    <img src="https://img.shields.io/badge/week-2-brightgreen.svg?style=flat-square" alt="week2">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week3">
@@ -16,11 +19,11 @@
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="License">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/thedaviddias/Front-End-Checklist/">
-    <img src="https://img.shields.io/badge/Front‑End_Checklist-followed-brightgreen.svg?style=flat-square" alt="Front-end checklist">
+    <img src="https://img.shields.io/badge/front‑end_checklist-followed-brightgreen.svg?style=flat-square" alt="Front-end checklist">
   </a>
 </p> 
 
@@ -75,7 +78,10 @@ git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 ## Data
-All the data used to create the Pokédex is taken from the [PokéAPI](pokeapi.co), which you can find at pokeapi.co. It serves over 17,000,000 API calls each month. It features almost all of the Pokémon data in one place.
+All the data used to create the Pokédex is taken from the [PokéAPI](pokeapi.co). It serves over 17,000,000 API calls each month. It features almost all of the Pokémon data in one place.
+
+> * 🛠 [PokéAPI](https://pokeapi.co/)
+> * 📖 [PokéAPI documentation](https://pokeapi.co/docs/v2.html)
 
 ### Retrieve
 In the code beneath the **async / await** method is used with a custom errorHandling function (so we don't have to use a try and catch block) to retrieve data from the PokeAPI asynchronous. The data gets fetched from the API and is converted to JSON.
@@ -88,6 +94,9 @@ const getPokemonURL = async () => {
   return data.results
 }
 ```
+> * 📖 [Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
+> * 📹 [The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
+> * 📖 [Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
 
 ### Featured data
 The Pokédex features these properties taken from the API:
@@ -120,6 +129,7 @@ The Pokédex features these properties taken from the API:
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
+Underneath you will find all the sources that were previously mentioned throughout the document.
 
 ### API
 - 🛠: [PokéAPI](https://pokeapi.co/)
