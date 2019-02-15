@@ -1,8 +1,22 @@
 import { errorHandling } from './await-error-handling.js'
 
-/* Fetch all Pokemon URL's and covert to JSON */
+/* If the data is available from the localStorage, retrieve
+   it from there */
+const getLocalStorageData = () => {
+  const pokemons = []
+
+  for (const key in localStorage) {
+    if(localStorage.hasOwnProperty(key)) {
+      pokemons.push(JSON.parse(localStorage.getItem(key)))
+    }
+  }
+
+  return pokemons
+}
+
+/* Fetch all Pokemon URL's and covert to JSON (max is 897) */
 const getPokemonURL = async () => {
-  const [err, data]  = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=24')).json())
+  const [err, data]  = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=800')).json())
   if(!data) throw err
   
   return data.results
@@ -27,10 +41,10 @@ const getPokemonData = async () => {
 /* Fetch data from one Pokemon based on the 
    window location hash (by Routie), convert to JSON */
 const getSinglePokemonData = async (name) => {
-  const [err, data] =  await errorHandling((await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json())
+  const [err, data] = await errorHandling((await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json())
   if(!data) throw err
 
   return data
 }
 
-export { getPokemonData, getSinglePokemonData }
+export { getLocalStorageData, getPokemonData, getSinglePokemonData }
