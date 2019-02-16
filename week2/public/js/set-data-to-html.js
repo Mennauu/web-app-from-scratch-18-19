@@ -1,15 +1,12 @@
 import { errorHandling } from './await-error-handling.js'
-import { getSinglePokemonData } from './get-data.js'
-import { filteredPokemonData, filteredSinglePokemonData } from './filter-data.js'
-import { allDataHTMLMarkUp } from './html-markup.js'
+import { filteredSinglePokemonData } from './filter-data.js'
+import { dataDecider } from './data-decider.js'
 
 const setDataToHTML = async () => {
-  const listContainer = document.querySelector('.list-container')
-
-  const [err, data] = await errorHandling(allDataHTMLMarkUp())
+  const [err, data] = await errorHandling(dataDecider())
   if(!data) throw err
 
-  console.log(data)
+  const listContainer = document.querySelector('.list-container')
 
   data.map(pokemon => {
 
@@ -47,11 +44,20 @@ const setDataToHTML = async () => {
 }
 
 const setDetailedDataToHTML = async (name) => {
-  const firstSection = document.querySelector('main > section')
-  const [err, data] = await errorHandling(getSinglePokemonData(name))
+  const [err, data] = await errorHandling(dataDecider(name))
   if(!data) throw err
 
-  const pokemon = filteredSinglePokemonData(data)
+  const firstSection = document.querySelector('main > section')
+  
+  if(localStorage.getItem(name)) {
+    var pokemon = data.find(value => {
+      return value.name === name
+    })
+  } else {
+    var pokemon = filteredSinglePokemonData(data)
+  }
+  
+  console.log(pokemon)
 
   /* Some pokemon have multiple types, so we map over 
     them to return each as its own element */

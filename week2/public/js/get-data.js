@@ -11,7 +11,7 @@ const getLocalStorageData = () => {
     }
   }
 
-  return pokemons
+  return pokemons.sort((a, b) => a.id - b.id)
 }
 
 /* Fetch all Pokemon URL's and covert to JSON (max is 897) */
