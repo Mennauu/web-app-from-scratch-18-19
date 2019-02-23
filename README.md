@@ -83,6 +83,20 @@ All the data used to create the Pokédex is taken from the [PokéAPI](pokeapi.co
 > * 🛠 [PokéAPI](https://pokeapi.co/)
 > * 📖 [PokéAPI documentation](https://pokeapi.co/docs/v2.html)
 
+### Authentication and limit
+No authentication is required to access the PokéAPI, and all resources are fully open and available. There is a limit of 100 API requests per IP address per minute.
+
+### Featured data
+The Pokédex features these properties taken from the API:
+- **url:** Used to obtain data from a single pokemon
+- **image:** Sprite of pokemon
+- **id:** Unique id of pokemon
+- **name:** Name of pokemon
+- **type(s):** Each pokemon has one or two types, for example: flying and fire
+- **weight:** Weight of pokemon in kilograms
+- **height:** Height of pokemon in meters
+- **game-stats:** Pokemons have base stats in games; speed, attack, special-attack, defense, special-defense and hp
+
 ### Retrieve
 In the code beneath the **async / await** method is used with a custom errorHandling function (so we don't have to use a try and catch block) to retrieve data from the PokeAPI asynchronous. The data gets fetched from the API and is converted to JSON.
 
@@ -98,16 +112,9 @@ const getPokemonURL = async () => {
 > * 📹 [The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
 > * 📖 [Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
 
-### Featured data
-The Pokédex features these properties taken from the API:
-- **url:** Used to obtain data from a single pokemon
-- **image:** Sprite of pokemon
-- **id:** Unique id of pokemon
-- **name:** Name of pokemon
-- **type(s):** Each pokemon has one or two types, for example: flying and fire
-- **weight:** Weight of pokemon in kilograms
-- **height:** Height of pokemon in meters
-- **game-stats:** Pokemons have base stats in games; speed, attack, special-attack, defense, special-defense and hp
+### LocalStorage
+
+> * 📖 [LocalStorage in JavaScript](https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36)
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
@@ -120,7 +127,7 @@ The Pokédex features these properties taken from the API:
 - [X] Divide the functions into modules
 - [ ] Add a filter function
 - [ ] Add a sort function
-- [ ] Keep data available in a variable (or use LocalStorage)
+- [X] Add LocalStorage
 - [X] Write a README
 
 <!-- Maybe someone helped me 🤔-->
