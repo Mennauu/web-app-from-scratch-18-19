@@ -21,10 +21,6 @@
   <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="License">
   </a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/thedaviddias/Front-End-Checklist/">
-    <img src="https://img.shields.io/badge/front‑end_checklist-followed-brightgreen.svg?style=flat-square" alt="Front-end checklist">
-  </a>
 </p> 
 
 <br>
@@ -136,7 +132,7 @@ const getPokemonURL = async () => {
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
-Underneath you will find all the sources that were previously mentioned throughout the document.
+Underneath you will find all the sources that were previously mentioned throughout the document and some others which were helpful.
 
 ### API
 - 🛠: [PokéAPI](https://pokeapi.co/)

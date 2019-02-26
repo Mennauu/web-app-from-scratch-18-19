@@ -4,7 +4,7 @@ import { getLocalStorageData, getSinglePokemonData } from './get-data.js'
 
 const dataDecider = async (name) => {
 
-  if (localStorage.getItem('bulbasaur' || name)) {
+  if (localStorage.getItem(name)) {
     return getLocalStorageData()
   } else if (window.location.hash) {
     const [err, data] = await errorHandling(getSinglePokemonData(name))

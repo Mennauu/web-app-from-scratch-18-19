@@ -2,16 +2,13 @@ import { errorHandling } from './await-error-handling.js'
 import { filteredSinglePokemonData } from './filter-data.js'
 import { dataDecider } from './data-decider.js'
 
-const setDataToHTML = async () => {
-  const [err, data] = await errorHandling(dataDecider())
-  if(!data) throw err
-
+const setDataToHTML = async (data) => {
   const listContainer = document.querySelector('.list-container')
+  listContainer.innerHTML = ""
 
   data.map(pokemon => {
-
     /* Some pokemon have multiple types, so we map over 
-    them to return each as its own element */
+       them to return each as its own element */
     const allTypes = pokemon.types.map(value => {
       return `<small class="type ${value.type.name}">${value.type.name}</small>`
     }).join(" ")
@@ -31,15 +28,8 @@ const setDataToHTML = async () => {
       </li>
     </a>`
 
-    /* We use insertAdjacentHTML because it's the fastest way
-      to insert all the HTML. It might not be the "cleanest" way */
+    /* Insert markup to HTML section */
     listContainer.insertAdjacentHTML('beforeend', HTMLMarkup)
-
-    /* If one of the pokemons isn't in localStorage, reset
-       localStorage */
-    if (localStorage.getItem(pokemon.name) === null) {
-      localStorage.setItem(pokemon.name, JSON.stringify(pokemon))
-    } 
   })
 }
 
@@ -56,8 +46,6 @@ const setDetailedDataToHTML = async (name) => {
   } else {
     var pokemon = filteredSinglePokemonData(data)
   }
-  
-  console.log(pokemon)
 
   /* Some pokemon have multiple types, so we map over 
     them to return each as its own element */
@@ -66,7 +54,7 @@ const setDetailedDataToHTML = async (name) => {
   }).join(" ")
 
   /* Pokemon have multiple stats, so we map over 
-    them to return each as its own element */
+     them to return each as its own element */
   const allStats = pokemon.stats.map(value => {
     return `<li class="detail"><small>${value.stat.name}</small><span>${value.base_stat}</span></li>`
   }).join("")
@@ -80,7 +68,7 @@ const setDetailedDataToHTML = async (name) => {
           <img src="${pokemon.image}" alt="${pokemon.name}" class="big-image">
         </div>
         <div class="result-info">
-          <p>Hier komt de beschrijving van ${pokemon.name}. Deze beschrijving is er nu nog niet omdat dit een omslachtig proces is.</p>
+          <p>De Pokemon ${pokemon.name} is een prachtige Pokemon uit de Pokemon wereld. Hij leeft in een van de zeven regio's.</p>
           <div class="pokemon-details">
             <ul class="pokemon-weight ${pokemon.types[0].type.name}">
               <li class="detail">
@@ -103,8 +91,8 @@ const setDetailedDataToHTML = async (name) => {
         </div>
       </div>
     </div>`
-  /* We use insertAdjacentHTML because it's the fastest way
-    to insert all the HTML. It might not be the "cleanest" way */
+
+  /* Insert markup to HTML section */
   firstSection.insertAdjacentHTML('beforeend', HTMLMarkup)
 }
 
