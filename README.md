@@ -45,8 +45,13 @@ Some resources possess an emoticon to help you understand which type of content 
 - [Installation](#installation)
 - [Features](#features)
 - [Data](#data)
-  - [Retrieve](#retrieve)
+  - [Authentication and limit](#authentication-and-limit)
   - [Featured data](#featured-data)
+  - [Retrieve](#retrieve)
+  - [LocalStorage](#localstorage)
+- [Structure]
+  - [Actor diagram](#authentication-and-limit)
+  - [Interaction diagram](#authentication-and-limit)
 - [Checklist](#checklist)
 - [Credits](#credits)
 - [Sources](#sources)
@@ -109,8 +114,15 @@ const getPokemonURL = async () => {
 > * 📖 [Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
 
 ### LocalStorage
+Data gets retrieved from the API and is stored in LocalStorage. On page load it will check whether data is available in LocalStorage, else it will do an API request to retrieve the data.
 
 > * 📖 [LocalStorage in JavaScript](https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36)
+
+## Structure
+
+### Actor diagram
+
+### Interaction diagram
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
@@ -128,7 +140,7 @@ const getPokemonURL = async () => {
 
 <!-- Maybe someone helped me 🤔-->
 ## Credits
-**Arash**: For helping me with error handling and great feedback and advice.
+**Arash**: For helping me with error handling, great feedback and advice and cleaning code.
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources

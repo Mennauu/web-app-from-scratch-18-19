@@ -1,7 +1,8 @@
-import { errorHandling } from './await-error-handling.js'
+import { errorHandling } from '../utilities/errorHandling.js'
+import { filterData } from './filterData.js'
 
-/* If the data is available from the localStorage, retrieve
-   it from there */
+/* If the data is available from the localStorage, 
+   retrieve it from there */
 const getLocalStorageData = () => {
   const pokemons = []
 
@@ -30,20 +31,21 @@ const getPokemonData = async () => {
     const data = pokemonURL.map(async result => {
       return await (await fetch(`${result.url}`)).json()
     })
+    console.log(await Promise.all(data))
 
-    return await Promise.all(data)
+    return await Promise.all(filterData(data))
   } catch (err) {
     throw err
   }
 }
 
 /* Fetch data from one Pokemon based on the 
-   window location hash */
+   window location hash and return filtered data */
 const getSinglePokemonData = async (name) => {
   const [err, data] = await errorHandling((await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json())
   if(!data) throw err
 
-  return data
+  return filterData(data)
 }
 
 export { getLocalStorageData, getPokemonData, getSinglePokemonData }

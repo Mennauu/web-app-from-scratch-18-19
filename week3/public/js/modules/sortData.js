@@ -1,6 +1,6 @@
-import { errorHandling } from './await-error-handling.js'
-import { dataDecider } from './data-decider.js'
-import { setDataToHTML } from './set-data-to-html.js'
+import { errorHandling } from '../utilities/errorHandling.js'
+import { dataDecider } from './dataDecider.js'
+import { setDataToHTML } from './renderData.js'
 
 const sortData = async (selectValue) => {
   let [err, data] = await errorHandling(dataDecider())

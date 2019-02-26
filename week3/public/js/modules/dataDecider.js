@@ -1,6 +1,5 @@
-import { errorHandling} from './await-error-handling.js'
-import { filteredPokemonData } from './filter-data.js'
-import { getLocalStorageData, getSinglePokemonData } from './get-data.js'
+import { errorHandling} from '../utilities/errorHandling.js'
+import { getLocalStorageData, getPokemonData, getSinglePokemonData } from './getData.js'
 
 const dataDecider = async (name) => {
 
@@ -12,7 +11,7 @@ const dataDecider = async (name) => {
 
     return data
   } else {
-    const [err, data] = await errorHandling(filteredPokemonData())
+    const [err, data] = await errorHandling(getPokemonData())
     if (!data) throw err
 
     return data

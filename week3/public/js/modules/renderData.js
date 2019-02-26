@@ -1,10 +1,11 @@
-import { errorHandling } from './await-error-handling.js'
-import { filteredSinglePokemonData } from './filter-data.js'
-import { dataDecider } from './data-decider.js'
+import { errorHandling } from '../utilities/errorHandling.js'
+import { filterData } from './filterData.js'
+import { dataDecider } from './dataDecider.js'
 
 const setDataToHTML = async (data) => {
   const listContainer = document.querySelector('.list-container')
-  listContainer.innerHTML = ""
+  
+  while (listContainer.firstChild) listContainer.removeChild(listContainer.firstChild)
 
   data.map(pokemon => {
     /* Some pokemon have multiple types, so we map over 
@@ -44,7 +45,7 @@ const setDetailedDataToHTML = async (name) => {
       return value.name === name
     })
   } else {
-    var pokemon = filteredSinglePokemonData(data)
+    var pokemon = await dataDecider(name)
   }
 
   /* Some pokemon have multiple types, so we map over 

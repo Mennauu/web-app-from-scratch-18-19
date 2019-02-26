@@ -1,16 +1,15 @@
 'use strict'
 
-import { setDataToHTML, setDetailedDataToHTML } from './set-data-to-html.js'
-import { sortData } from './sort-data.js'
-import { dataDecider } from './data-decider.js'
+import { errorHandling } from './utilities/errorHandling.js'
+import { setDataToHTML, setDetailedDataToHTML } from './modules/renderData.js'
+import { sortData } from './modules/sortData.js'
+import { dataDecider } from './modules/dataDecider.js'
+import './modules/routie.js'
 
 routie({
   // Homepage
   '': async () => { 
     const firstSection = document.querySelector('main > section')
-
-    // https://developer.mozilla.org/nl/docs/Web/API/MutationObserver
-    // Credits: Dennis
     const HTMLMarkup = 
       `<select class="sort-pokemons">
          <option value="1">Laagste nummer (eerst)</option>
@@ -27,11 +26,15 @@ routie({
 
     select.addEventListener('change', async () => {
       const selectValue = select.options[select.selectedIndex].value;
-      const data = await sortData(selectValue)
+      const [err, data] = await errorHandling(sortData(selectValue))
+      if(!data) throw err
+      
       setDataToHTML(data)
     })
 
-    const data = await dataDecider()
+    const [err, data] = await errorHandling(dataDecider())
+    if(!data) throw err
+
     setDataToHTML(data)
   },
    // Detail page
