@@ -1,6 +1,6 @@
 import { errorHandling } from './utils.js'
 import { filterSingleData, filterAllData } from './filterData.js'
-import { setLocalStorage } from './localStorage.js'
+import { setAllPokemon, getAllPokemon, isAllPokemonEmpty, getSinglePokemon, addSinglePokemon } from './cache.js';
 
 /* If the data is available from the 
    localStorage, retrieve it from there */
@@ -30,25 +30,29 @@ const getPokemonURL = async () => {
    on retrieved URL and return it filtered */
 export const getPokemonData = async () => {
   try {
-    /* Retrieve all the pokemon URLS */
-    const pokemonURL = await getPokemonURL()
 
-    /* Fetch all data based on url */
-    const data = pokemonURL.map(async result => {
-      return await (await fetch(`${result.url}`)).json()
-    })
+    if(isAllPokemonEmpty()) {
+      /* Retrieve all the pokemon URLS */
+      const pokemonURL = await getPokemonURL()
 
-    /* Resolve all promises */
-    const dataObjects = await Promise.all(data)
+      /* Fetch all data based on url */
+      const data = pokemonURL.map(async result => {
+        return await (await fetch(`${result.url}`)).json()
+      })
 
-    /* Filter all data objects */
-    const filteredData = await filterAllData(dataObjects)
+      /* Resolve all promises */
+      const dataObjects = await Promise.all(data)
 
-    /* Set data objects to LocalStorage */
-    setLocalStorage(filteredData)
+      /* Filter all data objects */
+      const filteredData = await filterAllData(dataObjects)
 
-    /* Return filtered data objects */
-    return filteredData
+      setAllPokemon(filteredData)
+
+      /* Return filtered data objects */
+      return filteredData
+    }
+
+    return getAllPokemon()
 
   } catch (err) {
     throw err
@@ -58,8 +62,19 @@ export const getPokemonData = async () => {
 /* Fetch data from one Pokemon based on the 
    window location hash and return it filtered */
 export const getSinglePokemonData = async (name) => {
-  const [err, data] = await errorHandling((await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json())
-  if (!data) throw err
 
-  return filterSingleData(data)
+  const singlePokemon = getSinglePokemon(name)
+
+  if(singlePokemon === undefined) {
+    const [err, data] = await errorHandling((await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json())
+    if (!data) throw err
+
+    const filteredData = filterSingleData(data)
+
+    addSinglePokemon(filteredData)
+
+    return filteredData
+  }
+
+  return singlePokemon
 }

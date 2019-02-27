@@ -13,5 +13,5 @@ export const detail = async (name) => {
   const [err, data] = await errorHandling(getSinglePokemonData(name))
   if (!data) throw err
 
-  setDetailedDataToHTML(data)
+  setDetailedDataToHTML(data, name)
 }

@@ -1,5 +1,5 @@
 import { removeChildren } from './utils.js'
-import { sortData } from './sortData.js'
+import { sortData } from './utils.js'
 
 export const setDataToHTML = (data) => {
   const firstSection = document.querySelector('main > section')
