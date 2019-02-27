@@ -1,7 +1,7 @@
-import { errorHandling} from '../utilities/errorHandling.js'
+import { errorHandling } from './utils.js'
 import { getLocalStorageData, getPokemonData, getSinglePokemonData } from './getData.js'
 
-const dataDecider = async (name) => {
+export const dataDecider = async (name) => {
 
   if (localStorage.getItem(name)) {
     return getLocalStorageData()
@@ -17,5 +17,3 @@ const dataDecider = async (name) => {
     return data
   }
 }
-
-export { dataDecider }

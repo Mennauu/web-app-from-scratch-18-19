@@ -1,11 +1,26 @@
-import { errorHandling } from '../utilities/errorHandling.js'
-import { filterData } from './filterData.js'
+import { errorHandling } from './utils.js'
 import { dataDecider } from './dataDecider.js'
 
-const setDataToHTML = async (data) => {
+export const setDataToHTML = (data) => {
+  const firstSection = document.querySelector('main > section')
+  /* Clear the page when new data is set */
+  while (firstSection.firstChild) firstSection.removeChild(firstSection.firstChild)
+  /* This is the HTML Markup for the Homepage */
+  const HomeHTML =
+    `<select class="sort-pokemons">
+       <option value="1">Laagste nummer (eerst)</option>
+       <option value="2">Hoogste nummer (eerst)</option>
+       <option value="3">van A tot Z</option>
+       <option value="4">van Z tot A</option>
+     </select>
+     <ul class="list-container"></ul>`
+
+  /* inject the HTML markup */
+  firstSection.insertAdjacentHTML('afterbegin', HomeHTML)
+
+  /* Because listContainer is only avaiable after we have 
+     set it in html we define it now */
   const listContainer = document.querySelector('.list-container')
-  
-  while (listContainer.firstChild) listContainer.removeChild(listContainer.firstChild)
 
   data.map(pokemon => {
     /* Some pokemon have multiple types, so we map over 
@@ -14,9 +29,9 @@ const setDataToHTML = async (data) => {
       return `<small class="type ${value.type.name}">${value.type.name}</small>`
     }).join(" ")
 
-    /* This is the HTML Markup that will be inserted */
-    const HTMLMarkup = 
-    `<a href="#${pokemon.name}" class="result">
+    /* This is the HTML Markup per pokemon that will be inserted */
+    const HTMLMarkup =
+      `<a href="#${pokemon.name}" class="result">
       <li>
         <div class="result-image">
           <img src="${pokemon.image}" alt="${pokemon.name}">
@@ -34,13 +49,15 @@ const setDataToHTML = async (data) => {
   })
 }
 
-const setDetailedDataToHTML = async (name) => {
+export const setDetailedDataToHTML = async (name) => {
   const [err, data] = await errorHandling(dataDecider(name))
-  if(!data) throw err
+  if (!data) throw err
 
   const firstSection = document.querySelector('main > section')
-  
-  if(localStorage.getItem(name)) {
+
+  while (firstSection.firstChild) firstSection.removeChild(firstSection.firstChild)
+
+  if (localStorage.getItem(name)) {
     var pokemon = data.find(value => {
       return value.name === name
     })
@@ -61,7 +78,7 @@ const setDetailedDataToHTML = async (name) => {
   }).join("")
 
   /* This is the HTML Markup that will be inserted */
-  const HTMLMarkup = 
+  const HTMLMarkup =
     `<div class="container">
       <h1 class="text-center">${pokemon.name} <span>#${pokemon.id}</span></h1>
       <div class="d-flex">
@@ -96,5 +113,3 @@ const setDetailedDataToHTML = async (name) => {
   /* Insert markup to HTML section */
   firstSection.insertAdjacentHTML('beforeend', HTMLMarkup)
 }
-
-export { setDataToHTML, setDetailedDataToHTML }

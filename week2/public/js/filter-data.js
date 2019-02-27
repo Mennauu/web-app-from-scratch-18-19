@@ -3,14 +3,14 @@ import { getPokemonData } from './get-data.js'
 
 const filteredPokemonData = async () => {
   const [err, data] = await errorHandling(getPokemonData())
-  if(!data) throw err
+  if (!data) throw err
 
   return data.map(filteredSinglePokemonData)
 }
 
 const filteredSinglePokemonData = ({ id, name, sprites, height, weight, types, stats }) => {
   return {
-    id, 
+    id,
     name,
     image: sprites.front_default,
     height,

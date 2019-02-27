@@ -1,6 +1,10 @@
-const filterData = ({ id, name, sprites, height, weight, types, stats }) => {
+export const filterAllData = async (data) => {
+  return data.map(filterSingleData)
+}
+
+export const filterSingleData = ({ id, name, sprites, height, weight, types, stats }) => {
   return {
-    id, 
+    id,
     name,
     image: sprites.front_default,
     height,
@@ -9,5 +13,3 @@ const filterData = ({ id, name, sprites, height, weight, types, stats }) => {
     stats
   }
 }
-
-export { filterData }
