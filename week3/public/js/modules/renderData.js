@@ -1,34 +1,56 @@
-import { removeChildren } from './utils.js'
-import { sortData } from './utils.js'
+import { sortData, filterByType, removeChildren, getUniqueTypes } from './utils.js'
 
 export const setDataToHTML = (data) => {
   const firstSection = document.querySelector('main > section')
+  
+  let types = getUniqueTypes(data)
+
+  const allTypes = types.map(type => {
+    return `<option value="${type}">${type}</option>`
+  }).join(" ")
 
   /* This is the HTML Markup for the Homepage */
   const HomeHTML =
-    `<div class="select">
+    `<div class="filters"><div class="select">
        <select class="sort-pokemons">
          <option value="1">Laagste nummer (eerst)</option>
          <option value="2">Hoogste nummer (eerst)</option>
-         <option value="3">van A tot Z</option>
-         <option value="4">van Z tot A</option>
+         <option value="3">Van A tot Z</option>
+         <option value="4">Van Z tot A</option>
        </select>
+     </div>
+     <div class="select">
+       <select class="filter-pokemons">
+         <option selected disabled>Filter pokemon by type</option>
+         ${allTypes}
+       </select>
+     </div>
      </div>
      <ul class="list-container"></ul>`
 
   /* inject the HTML markup */
   firstSection.insertAdjacentHTML('afterbegin', HomeHTML)
 
-  /* We define this element after the HTML has been set */
-  const select = document.querySelector('.sort-pokemons')
+  /* We define these elements after the HTML has been set */
+  const sortSelect = document.querySelector('.sort-pokemons')
+  const filterSelect = document.querySelector('.filter-pokemons')
 
-  /* Everytime we change the value of select, sort (render) the 
-     pokemon based on chosen value  */
-  select.addEventListener('change', async () => {
-    const selectValue = select.options[select.selectedIndex].value;
+  /* Everytime we change the value of sortSelect, sort (render) 
+     the pokemon based on chosen value  */
+  sortSelect.addEventListener('change', () => {
+    const selectValue = sortSelect.options[sortSelect.selectedIndex].value;
     const sortedData = sortData(data, selectValue)
 
     renderPokemon(sortedData)
+  })
+
+  /* Everytime we change the value of filterSelect, filter (render) 
+     the pokemon based on chosen value  */
+  filterSelect.addEventListener('change', () => {
+    const selectValue = filterSelect.options[filterSelect.selectedIndex].value;
+    const filteredDataByType = filterByType(data, selectValue)
+
+    renderPokemon(filteredDataByType)
   })
 
   renderPokemon(data)

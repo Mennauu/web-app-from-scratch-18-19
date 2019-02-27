@@ -1,10 +1,10 @@
-import { errorHandling } from './utils.js'
+import { errorHandling, showLoadingAnimation, removeLoadingAnimation } from './utils.js'
 import { filterSingleData, filterAllData } from './filterData.js'
 import { setAllPokemon, getAllPokemon, isAllPokemonEmpty, getSinglePokemon, addSinglePokemon } from './cache.js';
 
 /* Fetch all Pokemon URL's (max is 897) */
 const getPokemonURL = async () => {
-  const [err, data] = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=24&offset=0')).json())
+  const [err, data] = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=24')).json())
   if (!data) throw err
 
   return data.results
@@ -14,6 +14,7 @@ const getPokemonURL = async () => {
    on retrieved URL and return it filtered */
 export const getPokemonData = async () => {
   try {
+    showLoadingAnimation()
 
     /* Check if allPokemon array is empty */
     if(isAllPokemonEmpty()) {
@@ -43,30 +44,38 @@ export const getPokemonData = async () => {
 
   } catch (err) {
     throw err
+  } finally {
+    removeLoadingAnimation()
   }
 }
 
 /* Fetch data from one Pokemon based on the 
    name and return it filtered */
 export const getSinglePokemonData = async (name) => {
+  try {
+    showLoadingAnimation()
 
-  /* Get data off concerning pokemon from allPokemon array */
-  const singlePokemon = getSinglePokemon(name)
+    /* Get data off concerning pokemon from allPokemon array */
+    const singlePokemon = getSinglePokemon(name)
+    /* If there is no data (pokemon is undefined), we make an api
+      call to retrieve the data from the single pokemon */
+    if(singlePokemon === undefined) {
+      const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json()
 
-  /* If there is no data (pokemon is undefined), we make an api
-     call to retrieve the data from the single pokemon */
-  if(singlePokemon === undefined) {
-    const [err, data] = await errorHandling((await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json())
-    if (!data) throw err
+      /* Filter data */
+      const filteredData = filterSingleData(data)
 
-    /* Filter data */
-    const filteredData = filterSingleData(data)
+      /* Push data from single pokemon to allPokemon array */
+      addSinglePokemon(filteredData)
 
-    /* Push data from single pokemon to allPokemon array */
-    addSinglePokemon(filteredData)
-
-    return filteredData
-  }
+      return filteredData
+    }
 
   return singlePokemon
+
+  } catch (err) {
+    throw err
+  } finally {
+    removeLoadingAnimation()
+  }
 }
