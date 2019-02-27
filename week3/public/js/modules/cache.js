@@ -1,3 +1,4 @@
+/* Array where we save all the pokemon data */
 let allPokemon = []
 
 export const setAllPokemon = (data) => {

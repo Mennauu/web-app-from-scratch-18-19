@@ -6,12 +6,14 @@ export const setDataToHTML = (data) => {
 
   /* This is the HTML Markup for the Homepage */
   const HomeHTML =
-    `<select class="sort-pokemons">
-       <option value="1">Laagste nummer (eerst)</option>
-       <option value="2">Hoogste nummer (eerst)</option>
-       <option value="3">van A tot Z</option>
-       <option value="4">van Z tot A</option>
-     </select>
+    `<div class="select">
+       <select class="sort-pokemons">
+         <option value="1">Laagste nummer (eerst)</option>
+         <option value="2">Hoogste nummer (eerst)</option>
+         <option value="3">van A tot Z</option>
+         <option value="4">van Z tot A</option>
+       </select>
+     </div>
      <ul class="list-container"></ul>`
 
   /* inject the HTML markup */

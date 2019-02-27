@@ -14,20 +14,23 @@ export const removeChildren = (element) => {
   while (element.firstChild) element.removeChild(element.firstChild)
 }
 
-/* sort data */
+/* Sort data based on select value */
 export const sortData = (data, selectValue) => {
-  if (selectValue === "1") {
-    data = data.sort((a, b) => a.id - b.id)
-  } else if (selectValue === "2") {
-    data = data.sort((a, b) => b.id - a.id)
-  } else if (selectValue === "3") {
-    data = data.sort((a, b) => {
-      if (a.name < b.name) return -1
-    })
-  } else {
-    data = data.sort((a, b) => {
-      if (b.name < a.name) return -1
-    })
+  switch(selectValue) {
+    case "1": 
+      data = data.sort((a, b) => a.id - b.id)
+      break
+    case "2": 
+      data = data.sort((a, b) => b.id - a.id)
+      break
+    case "3": 
+      data = data.sort((a, b) => { if (a.name < b.name) return -1 })
+      break
+    case "4": 
+      data = data.sort((a, b) => { if (b.name < a.name) return -1 })
+      break
+    default:
+      data = data.sort((a, b) => a.id - b.id)
   }
 
   return data
