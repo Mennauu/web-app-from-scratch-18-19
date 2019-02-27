@@ -1,9 +1,6 @@
-import { errorHandling } from './utils.js'
-import { dataDecider } from './dataDecider.js'
-
-export const sortData = async (selectValue) => {
-  let [err, data] = await errorHandling(dataDecider())
-  if (!data) throw err
+export const sortData = (data, selectValue) => {
+  // let [err, data] = await errorHandling(dataDecider())
+  // if (!data) throw err
 
   if (selectValue === "1") {
     data = data.sort((a, b) => a.id - b.id)
@@ -19,5 +16,5 @@ export const sortData = async (selectValue) => {
     })
   }
 
-  return data;
+  return data
 }

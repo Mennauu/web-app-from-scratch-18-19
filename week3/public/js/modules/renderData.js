@@ -1,10 +1,9 @@
-import { errorHandling } from './utils.js'
-import { dataDecider } from './dataDecider.js'
+import { removeChildren } from './utils.js'
+import { sortData } from './sortData.js'
 
 export const setDataToHTML = (data) => {
   const firstSection = document.querySelector('main > section')
-  /* Clear the page when new data is set */
-  while (firstSection.firstChild) firstSection.removeChild(firstSection.firstChild)
+
   /* This is the HTML Markup for the Homepage */
   const HomeHTML =
     `<select class="sort-pokemons">
@@ -18,9 +17,32 @@ export const setDataToHTML = (data) => {
   /* inject the HTML markup */
   firstSection.insertAdjacentHTML('afterbegin', HomeHTML)
 
-  /* Because listContainer is only avaiable after we have 
-     set it in html we define it now */
+  /* We define this element after the HTML has been set */
+  const select = document.querySelector('.sort-pokemons')
+
+  /* Everytime we change the value of select, sort (render) the 
+     pokemon based on chosen value  */
+  select.addEventListener('change', async () => {
+    const selectValue = select.options[select.selectedIndex].value;
+    const sortedData = sortData(data, selectValue)
+
+    renderPokemon(sortedData)
+  })
+
+  renderPokemon(data)
+}
+
+
+
+
+const renderPokemon = (data) => {
+  const container = document.querySelector('.container')
   const listContainer = document.querySelector('.list-container')
+
+  /* check if container element exists, and if so, remove children */
+  if(container !== null) removeChildren(container)
+  /* Remove children of parent before we set it again */
+  removeChildren(listContainer)
 
   data.map(pokemon => {
     /* Some pokemon have multiple types, so we map over 
@@ -49,21 +71,15 @@ export const setDataToHTML = (data) => {
   })
 }
 
-export const setDetailedDataToHTML = async (name) => {
-  const [err, data] = await errorHandling(dataDecider(name))
-  if (!data) throw err
 
+
+
+
+export const setDetailedDataToHTML = (pokemon) => {
   const firstSection = document.querySelector('main > section')
 
-  while (firstSection.firstChild) firstSection.removeChild(firstSection.firstChild)
-
-  if (localStorage.getItem(name)) {
-    var pokemon = data.find(value => {
-      return value.name === name
-    })
-  } else {
-    var pokemon = await dataDecider(name)
-  }
+  /* Remove children of parent before we set it again */
+  removeChildren(firstSection)
 
   /* Some pokemon have multiple types, so we map over 
     them to return each as its own element */

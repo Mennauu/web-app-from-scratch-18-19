@@ -8,3 +8,8 @@ export const errorHandling = promise => {
     .then(data => [null, data])
     .catch(err => [err])
 }
+
+/* Clear the children of parent element */
+export const removeChildren = (element) => {
+  while (element.firstChild) element.removeChild(element.firstChild)
+}
