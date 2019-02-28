@@ -16,6 +16,7 @@
   --dark-gray: #2c3e50;
   --blue: #30a7d7;
   --red: #cc0000;
+  --orange: #EE8130;
   --border-radius: 4px;
 }
  
@@ -24,11 +25,9 @@
 *********************************/
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after {box-sizing: border-box;}
  
-html { font-size: 16px; }
+html {font-size: 16px;}
  
 body {
    margin: 0;
@@ -70,6 +69,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
+h1 {font-size: 2.5rem;}
+
 p { 
   font-size: 1.2em; 
   margin-top: 0;
@@ -80,9 +81,7 @@ a {
   color: var(--black);
 }
 
-h1 {
-  font-size: 2.5rem;
-}
+h1 > span {color: var(--gray);}
 
 /********************************
 *         4. Top Header         *
@@ -104,9 +103,7 @@ h1 {
   margin: auto;
 }
 
-.container h1 {
-  margin: 1em 0;
-}
+.container h1 {margin: 1em 0;}
 
 .list-container {
   display: flex;
@@ -119,8 +116,7 @@ h1 {
   margin: 0.5em 0.5em 3em 0.5em;
   transition: 0.43s;
 }
-
-.result:hover { transform: scale(1.05) }
+.result:hover {transform: scale(1.05)}
 
 .result-image {
   background-color: var(--light-gray);
@@ -130,14 +126,13 @@ h1 {
   max-height: 31.25em;
 }
 
-.list-container .result-image > img { height: 150px; }
+.list-container .result-image {text-align: center;}
 
-.list-container .result-image {
-  text-align: center;
-}
+.list-container .result-image > img {height: 150px;}
 
-.list-container .result-info { padding: 0; }
-.result-info { padding: 0 1.5em; }
+.list-container .result-info {padding: 0;}
+
+.result-info {padding: 0 1.5em;}
 
 .result-info span {
   font-weight: bold;
@@ -151,27 +146,6 @@ h1 {
 h1::first-letter,
 .pokemon-details small::first-letter {
   text-transform: uppercase;
-}
-
-h1 > span {
-  color: var(--gray);
-}
-
-.text-center {
-  text-align: center;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.d-flex > div {
-  flex: 1 0 50%;
-}
-
-.big-image {
-  width: 100%;
-  image-rendering: pixelated;
 }
 
 .pokemon-details {
@@ -193,9 +167,9 @@ h1 > span {
   flex-wrap: wrap;
 }
 
-.pokemon-details ul:last-child {
-  padding: 1em;
-}
+.pokemon-details ul:last-child {padding: 1em;}
+
+.pokemon-details li {flex: 1 0 50%;}
 
 .pokemon-weight {
   flex-wrap: nowrap;
@@ -204,14 +178,81 @@ h1 > span {
   width: 100%;
 }
 
-.pokemon-details li {
-  flex: 1 0 50%;
+.pokemon-types {margin: 2em 0;}
+
+/* Pokemon type Colors */
+.pokemon-id {
+  color: var(--gray);
+  margin-top: 0.8em;
+  display: block;
+  font-weight: bold;
 }
 
-.pokemon-types {
-  margin: 2em 0;
+.type {
+  padding: 0.2em 1em;
+  color: var(--white);
+  border-radius: var(--border-radius);
+  display: inline-block;
 }
 
+.normal { background-color: #A8A77A; }
+.fire { background-color: #EE8130; }
+.water { background-color: #6390F0; }
+.electric { background-color: #F7D02C; }
+.grass { background-color: #7AC74C; }
+.ice { background-color: #96D9D6; }
+.fighting { background-color: #C22E28; }
+.poison { background-color: #A33EA1; }
+.ground { background-color: #E2BF65; }
+.flying { background-color: #A98FF3; }
+.psychic { background-color: #F95587; }
+.bug { background-color: #A6B91A; }
+.rock { background-color: #B6A136; }
+.ghost { background-color: #735797; }
+.dragon { background-color: #6F35FC; }
+.dark { background-color: #705746; }
+.steel { background-color: #B7B7CE; }
+.fairy { background-color: #D685AD; }
+
+
+/* select */
+.filters {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 1.5em;
+}
+
+.select {
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: var(--dark-gray);
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  position: relative;
+}
+/* Select arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1em;
+  pointer-events: none;
+  color: var(--white)
+}
+
+.filter-pokemons {background-color: var(--orange)}
+
+/* Transition */
+.select::after {transition: .25s all ease;}
+
+.select:hover::after {color: var(--black);}
+
+.select:last-of-type {margin-right: 1em;}
+
+/* Progressive Loading state */
 .loader {
   display: none;
   position: absolute;
@@ -219,8 +260,6 @@ h1 > span {
   padding: 6em 1em 1em 1em;
   width: 100%;
 }
-
-.show {display: flex;}
 
 .result-placeholder {
   flex: 1 0 15%;
@@ -273,74 +312,15 @@ h1 > span {
   100% {transform: scale(0.96);}
 }
 
+/* Utils */
+.text-center {text-align: center;}
 
-/* Pokemon type Colors */
-.pokemon-id {
-  color: var(--gray);
-  margin-top: 0.8em;
-  display: block;
-  font-weight: bold;
+.d-flex {display: flex;}
+.d-flex > div {flex: 1 0 50%;}
+
+.big-image {
+  width: 100%;
+  image-rendering: pixelated;
 }
 
-.type {
-  padding: 0.2em 1em;
-  color: var(--white);
-  border-radius: var(--border-radius);
-  display: inline-block;
-}
-
-/* Pokemon Type Colors */
-.normal { background-color: #A8A77A; }
-.fire { background-color: #EE8130; }
-.water { background-color: #6390F0; }
-.electric { background-color: #F7D02C; }
-.grass { background-color: #7AC74C; }
-.ice { background-color: #96D9D6; }
-.fighting { background-color: #C22E28; }
-.poison { background-color: #A33EA1; }
-.ground { background-color: #E2BF65; }
-.flying { background-color: #A98FF3; }
-.psychic { background-color: #F95587; }
-.bug { background-color: #A6B91A; }
-.rock { background-color: #B6A136; }
-.ghost { background-color: #735797; }
-.dragon { background-color: #6F35FC; }
-.dark { background-color: #705746; }
-.steel { background-color: #B7B7CE; }
-.fairy { background-color: #D685AD; }
-
-.filters {
-  display: flex;
-  flex-direction: row-reverse;
-  padding: 1.5em;
-}
-
-/* select */
-.select {
-  width: 20em;
-  height: 3em;
-  line-height: 3;
-  background: var(--dark-gray);
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  position: relative;
-}
-/* Arrow */
-.select::after {
-  content: '\25BC';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0 1em;
-  pointer-events: none;
-  color: var(--white)
-}
-
-.filter-pokemons {background-color: #EE8130;}
-
-/* Transition */
-.select::after {transition: .25s all ease;}
-.select:hover::after {color: var(--black);}
-
-.select:last-of-type {margin-right: 1em;}
+.show {display: flex;}

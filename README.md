@@ -1,6 +1,6 @@
 <h1 align="center">Web App From Scratch @cmda-minor-web 18-19</h1>
 
-<p align="center"><b>A Pokédex that shows all the Pokemons. It currently displays these properties: image, id, name type(s), weight, height and game-stats. The data is retrieved using the <a href="https://pokeapi.co/">PokéAPI</a>.</b>
+<p align="center"><b>A Pokédex that shows all the Pokemons. It displays these properties: image, id, name, type(s), weight, height and game-stats. You can filter the pokemon on type and sort the pokemon on id and name. The data is retrieved using the <a href="https://pokeapi.co/">PokéAPI</a>.</b>
 </p>
 
 <br>
@@ -15,7 +15,7 @@
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week3">
-    <img src="https://img.shields.io/badge/week-3-red.svg?style=flat-square" alt="week3">
+    <img src="https://img.shields.io/badge/week-3-brightgreen.svg?style=flat-square" alt="week3">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
@@ -25,7 +25,7 @@
 
 <br>
 
-![preview](week1/public/images/preview.png)
+![preview](week3/public/images/preview.png)
 
 <br>
 
@@ -39,6 +39,8 @@ Some resources possess an emoticon to help you understand which type of content 
 - 🛠: Tool or library
 - 📹: Video
 
+You can find a live demo right here: https://mennauu.github.io/web-app-from-scratch-18-19/week3
+
 <!-- Maybe a table of contents here? 📚 -->
 ## Table of Contents
 
@@ -48,8 +50,8 @@ Some resources possess an emoticon to help you understand which type of content 
   - [Authentication and limit](#authentication-and-limit)
   - [Featured data](#featured-data)
   - [Retrieve](#retrieve)
-  - [LocalStorage](#localstorage)
-- [Structure]
+  - [Cache](#cache)
+- [Structure](#structure)
   - [Actor diagram](#authentication-and-limit)
   - [Interaction diagram](#authentication-and-limit)
 - [Checklist](#checklist)
@@ -113,10 +115,16 @@ const getPokemonURL = async () => {
 > * 📹 [The Async Await Episode I Promised](https://www.youtube.com/watch?v=vn3tm0quoqE)
 > * 📖 [Alternative error handling for async and await](https://stackoverflow.com/a/49311904 )
 
-### LocalStorage
-Data gets retrieved from the API and is stored in LocalStorage. On page load it will check whether data is available in LocalStorage, else it will do an API request to retrieve the data.
+### Cache
+When data is retrieved by the API it's saved in a variable so that we can use the data while navigating throughout the website to different pages and don't have to do an API request each time.
 
-> * 📖 [LocalStorage in JavaScript](https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36)
+```JavaScript
+let allPokemon = []
+
+export const setAllPokemon = (data) => {
+  allPokemon = data;
+}
+```
 
 ## Structure
 
@@ -126,21 +134,25 @@ Data gets retrieved from the API and is stored in LocalStorage. On page load it 
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
-- [x] Find an API of interest
+- [x] Find an API
 - [x] Retrieve data from the API asynchronous
 - [x] Render data to HTML without using innerHTML
 - [X] Rewrite 'spaghetti' code to functions
 - [X] Create a detailpage using a [router](http://projects.jga.me/routie/)
 - [X] Style everything and make it responsive
-- [X] Divide the functions into modules
-- [ ] Add a filter function
-- [ ] Add a sort function
-- [X] Add LocalStorage
+- [X] Divide project to modules
+- [X] LocalStorage
+- [X] Sort results on id and name
+- [X] RouteHandler
+- [X] Remove LocalStorage
+- [X] Cache (data in variable)
+- [X] Progressive loading state
+- [X] Filter results on type
 - [X] Write a README
 
 <!-- Maybe someone helped me 🤔-->
 ## Credits
-**Arash**: For helping me with error handling, great feedback and advice and cleaning code.
+**Arash**: For giving amazing feedback and advice on my code. He was like a tutor to me that helped me improve and understand my code.
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
