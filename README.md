@@ -142,7 +142,7 @@ I created two diagrams to show the actors of my code (actor diagram), whom handl
 > * 🛠 [Draw](https://draw.io)
 
 ### Actor diagram
-![Actor diagram](assets/actor-diagram.png)
+![Actor diagram](assets/actordiagram.png)
 
 ### Interaction diagram
 ![Interaction diagram](assets/interaction-diagram.png)
