@@ -17,7 +17,7 @@ export const getPokemonData = async () => {
     showLoadingAnimation()
 
     /* Check if allPokemon array is empty */
-    if(isAllPokemonEmpty()) {
+    if (isAllPokemonEmpty()) {
       /* Retrieve all the pokemon URLS */
       const pokemonURL = await getPokemonURL()
 
@@ -59,7 +59,7 @@ export const getSinglePokemonData = async (name) => {
     const singlePokemon = getSinglePokemon(name)
     /* If there is no data (pokemon is undefined), we make an api
       call to retrieve the data from the single pokemon */
-    if(singlePokemon === undefined) {
+    if (singlePokemon === undefined) {
       const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json()
 
       /* Filter data */
@@ -71,7 +71,7 @@ export const getSinglePokemonData = async (name) => {
       return filteredData
     }
 
-  return singlePokemon
+    return singlePokemon
 
   } catch (err) {
     throw err

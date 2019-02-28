@@ -13,17 +13,17 @@ export const removeChildren = (element) => {
 
 /* Sort data based on select value */
 export const sortData = (data, selectValue) => {
-  switch(selectValue) {
-    case "1": 
+  switch (selectValue) {
+    case "1":
       data = data.sort((a, b) => a.id - b.id)
       break
-    case "2": 
+    case "2":
       data = data.sort((a, b) => b.id - a.id)
       break
-    case "3": 
+    case "3":
       data = data.sort((a, b) => { if (a.name < b.name) return -1 })
       break
-    case "4": 
+    case "4":
       data = data.sort((a, b) => { if (b.name < a.name) return -1 })
       break
     default:
@@ -34,11 +34,17 @@ export const sortData = (data, selectValue) => {
 }
 
 export const filterByType = (data, selectValue) => {
-  const types = getUniqueTypes(data)
+  let objectsFilteredByType = []
 
-  if(selectValue === "fire") { 
-    return data.types.find(type => { console.log(type) })
-  }
+  data.map(object => {
+    object.types.map(value => {
+      if (selectValue === value.type.name) {
+        objectsFilteredByType.push(object)
+      }
+    })
+  })
+
+  return objectsFilteredByType
 }
 
 export const showLoadingAnimation = () => {
@@ -51,7 +57,6 @@ export const removeLoadingAnimation = () => {
 
 /* Get all the unique pokemon Types */
 export const getUniqueTypes = (data) => {
-
   let values = []
   let types
 
