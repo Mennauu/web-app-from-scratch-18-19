@@ -1,6 +1,6 @@
 /* Alternative way to handle promise error handling
    Source: https://stackoverflow.com/a/49311904 By: Steve Banton */
-export const errorHandling = promise => {
+export const errorHandling = (promise) => {
   return promise
     .then(data => [null, data])
     .catch(err => [err])
@@ -47,14 +47,6 @@ export const filterByType = (data, selectValue) => {
   return objectsFilteredByType
 }
 
-export const showLoadingAnimation = () => {
-  document.querySelector('.loader').classList.add('show')
-}
-
-export const removeLoadingAnimation = () => {
-  document.querySelector('.loader').classList.remove('show')
-}
-
 /* Get all the unique pokemon Types */
 export const getUniqueTypes = (data) => {
   let values = []
@@ -68,4 +60,12 @@ export const getUniqueTypes = (data) => {
   })
 
   return types
+}
+
+export const showLoadingAnimation = () => {
+  document.querySelector('.loader').classList.add('show')
+}
+
+export const removeLoadingAnimation = () => {
+  document.querySelector('.loader').classList.remove('show')
 }

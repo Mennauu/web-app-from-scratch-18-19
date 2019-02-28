@@ -61,6 +61,7 @@ You can find a live demo right here: https://mennauu.github.io/web-app-from-scra
   - [Router](#router)
   - [Async and await](#async-and-await)
   - [General JavaScript](#general-javascript)
+  - [Diagrams](#diagrams)
 - [License](#license)
 
 <!-- How about a section that describes how to install this project? 🤓 -->
@@ -78,6 +79,10 @@ git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 
 <!-- ...but how does one use this project? What are its features 🤔 -->
 ## Features
+The pokédex features two interactions that can be made by the user:
+
+* **Filter pokemon by type:** e.g. only show pokemon with the fire type
+* **Sort pokemon on id or name:** from lowest to highest id, highest to lowest id, A to Z and Z to A
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 ## Data
@@ -127,10 +132,13 @@ export const setAllPokemon = (data) => {
 ```
 
 ## Structure
+> * 🛠 [Draw](https://draw.io)
 
 ### Actor diagram
 
 ### Interaction diagram
+
+![Interaction diagram](week3/public/images/interaction-diagram.png)
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
@@ -148,11 +156,16 @@ export const setAllPokemon = (data) => {
 - [X] Cache (data in variable)
 - [X] Progressive loading state
 - [X] Filter results on type
+- [X] Actor diagram
+- [X] Interaction diagram
 - [X] Write a README
+- [ ] Unique progressive loading state for detailpage
+- [ ] Sort pokemon that are filtered by type
+- [ ] Error feedback for users
 
 <!-- Maybe someone helped me 🤔-->
 ## Credits
-**Arash**: For giving amazing feedback and advice on my code. He was like a tutor to me that helped me improve and understand my code.
+**Arash**: For giving amazing feedback and advice on my code. He was like a tutor to me that helped improve and understand code.
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
@@ -172,6 +185,11 @@ Underneath you will find all the sources that were previously mentioned througho
 
 ### General JavaScript
 - 📹: [JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
+
+### Diagrams
+
+- 🛠: [Draw](https://draw.io)
+- 🛠: [Balsamiq](https://balsamiq.com/wireframes/)
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
