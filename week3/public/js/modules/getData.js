@@ -4,7 +4,7 @@ import { setAllPokemon, getAllPokemon, isAllPokemonEmpty, getSinglePokemon, addS
 
 /* Fetch all Pokemon URL's (max is 897) */
 const getPokemonURL = async () => {
-  const [err, data] = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=24')).json())
+  const [err, data] = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=800')).json())
   if (!data) throw err
 
   return data.results
