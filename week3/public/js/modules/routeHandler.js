@@ -1,17 +1,27 @@
-import { errorHandling } from './utils.js'
-import { setDataToHTML, setDetailedDataToHTML } from './renderData.js'
+import { showLoadingAnimation, removeLoadingAnimation } from './utils.js'
+import { setDataToHTML, setDetailedDataToHTML, renderError } from './renderData.js'
 import { getPokemonData, getSinglePokemonData } from './getData.js'
 
 export const home = async () => {
-  const [err, data] = await errorHandling(getPokemonData())
-  if (!data) throw err
-
-  setDataToHTML(data)
+  try {
+    showLoadingAnimation()
+    const data = await getPokemonData()
+    setDataToHTML(data)
+  } catch (err) {
+    renderError(err)
+  } finally {
+    removeLoadingAnimation()
+  }
 }
 
 export const detail = async (name) => {
-  const [err, data] = await errorHandling(getSinglePokemonData(name))
-  if (!data) throw err
-
-  setDetailedDataToHTML(data, name)
+  try {
+    showLoadingAnimation()
+    const data = await getSinglePokemonData(name)
+    setDetailedDataToHTML(data, name)
+  } catch (err) {
+    renderError(err)
+  } finally {
+    removeLoadingAnimation()
+  }
 }

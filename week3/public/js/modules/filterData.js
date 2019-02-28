@@ -1,4 +1,4 @@
-export const filterAllData = async (data) => {
+export const filterAllData = (data) => {
   return data.map(filterSingleData)
 }
 

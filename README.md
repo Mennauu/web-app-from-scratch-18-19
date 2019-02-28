@@ -45,7 +45,7 @@ You can find a live demo right here: https://mennauu.github.io/web-app-from-scra
 ## Table of Contents
 
 - [Installation](#installation)
-- [Features](#features)
+- [Interactions](#interactions)
 - [Data](#data)
   - [Authentication and limit](#authentication-and-limit)
   - [Featured data](#featured-data)
@@ -78,7 +78,7 @@ git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 4. Load any [live server](https://www.npmjs.com/package/live-server) and serve index.html
 
 <!-- ...but how does one use this project? What are its features 🤔 -->
-## Features
+## Interactions
 The pokédex features two interactions that can be made by the user:
 
 * **Filter pokemon by type:** e.g. only show pokemon with the fire type
@@ -106,14 +106,19 @@ The Pokédex features these properties taken from the API:
 - **game-stats:** Pokemons have base stats in games; speed, attack, special-attack, defense, special-defense and hp
 
 ### Retrieve
-In the code beneath the **async / await** method is used with a custom errorHandling function (so we don't have to use a try and catch block) to retrieve data from the PokeAPI asynchronous. The data gets fetched from the API and is converted to JSON.
+In the code beneath the **async / await** method is used to retrieve data from the PokeAPI asynchronous. The data gets fetched from the API and is converted to JSON. If it fails to retrieve data from the API, a custom error message will be displayed.
 
 ```Javascript
 const getPokemonURL = async () => {
-  const [err, data] = await errorHandling((await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20')).json())
-  if(!data) throw err
-  
-  return data.results
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=800')
+  /* If we get no response from the API throw an error */
+  if(res.status === 404){
+    throw Error("Het ziet er naar uit dat we op het moment geen Pokemon op kunnen halen. Probeer het later nog eens.");
+  }
+  /* Convert response to JSON */
+  const data = await res.json()
+
+  return data.results;
 }
 ```
 > * 📖 [Why await beats Promise#then()](https://mathiasbynens.be/notes/async-stack-traces)
@@ -137,11 +142,9 @@ I created two diagrams to show the actors of my code (actor diagram), whom handl
 > * 🛠 [Draw](https://draw.io)
 
 ### Actor diagram
-
 ![Actor diagram](assets/actor-diagram.png)
 
 ### Interaction diagram
-
 ![Interaction diagram](assets/interaction-diagram.png)
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
@@ -165,11 +168,12 @@ I created two diagrams to show the actors of my code (actor diagram), whom handl
 - [X] Write a README
 - [ ] Unique progressive loading state for detailpage
 - [ ] Sort pokemon that are filtered by type
-- [ ] Error feedback for users
+- [X] Error feedback for users
+- [ ] Change filter on type _select_ background color based on selectValue 
 
 <!-- Maybe someone helped me 🤔-->
 ## Credits
-**Arash**: For giving amazing feedback and advice on my code. He was like a tutor to me that helped improve and understand code.
+**Arash**: For giving amazing feedback and advice on my code. He was like a tutor to me that helped me improve and understand code.
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
@@ -191,7 +195,6 @@ Underneath you will find all the sources that were previously mentioned througho
 - 📹: [JavaScript Pro Tips - Code This, NOT That](https://www.youtube.com/watch?v=Mus_vwhTCq0)
 
 ### Diagrams
-
 - 🛠: [Draw](https://draw.io)
 - 🛠: [Balsamiq](https://balsamiq.com/wireframes/)
 

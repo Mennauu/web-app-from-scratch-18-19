@@ -324,3 +324,13 @@ h1::first-letter,
 }
 
 .show {display: flex;}
+
+.error {
+  color: var(--red);
+  background-color: #FFBABA;
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  margin-top: 2em;
+}

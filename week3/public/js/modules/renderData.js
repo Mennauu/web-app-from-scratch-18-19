@@ -2,39 +2,39 @@ import { sortData, filterByType, removeChildren, getUniqueTypes } from './utils.
 
 export const setDataToHTML = (data) => {
   const firstSection = document.querySelector('main > section')
-  
-  let types = getUniqueTypes(data)
 
+  removeChildren(firstSection)
+  /* Get array with all unique types */
+  let types = getUniqueTypes(data)
+  /* There are multiple types, so we map over 
+     them to return each as its own element */
   const allTypes = types.map(type => {
     return `<option value="${type}">${type}</option>`
   }).join(" ")
-
   /* This is the HTML Markup for the Homepage */
   const HomeHTML =
-    `<div class="filters"><div class="select">
-       <select class="sort-pokemons">
-         <option value="1">Laagste nummer (eerst)</option>
-         <option value="2">Hoogste nummer (eerst)</option>
-         <option value="3">Van A tot Z</option>
-         <option value="4">Van Z tot A</option>
-       </select>
-     </div>
-     <div class="select">
-       <select class="filter-pokemons">
-         <option selected disabled>Filter pokemon by type</option>
-         ${allTypes}
-       </select>
-     </div>
+    `<div class="filters">
+       <div class="select">
+        <select class="sort-pokemons">
+          <option value="1">Laag id (eerst)</option>
+          <option value="2">Hoog id (eerst)</option>
+          <option value="3">Van A tot Z</option>
+          <option value="4">Van Z tot A</option>
+        </select>
+      </div>
+      <div class="select">
+        <select class="filter-pokemons">
+          <option selected disabled>Filter op type</option>
+          ${allTypes}
+        </select>
+      </div>
      </div>
      <ul class="list-container"></ul>`
-
   /* inject the HTML markup */
   firstSection.insertAdjacentHTML('afterbegin', HomeHTML)
-
   /* We define these elements after the HTML has been set */
   const sortSelect = document.querySelector('.sort-pokemons')
   const filterSelect = document.querySelector('.filter-pokemons')
-
   /* Everytime we change the value of sortSelect, sort (render) 
      the pokemon based on chosen value  */
   sortSelect.addEventListener('change', () => {
@@ -43,7 +43,6 @@ export const setDataToHTML = (data) => {
 
     renderPokemon(sortedData)
   })
-
   /* Everytime we change the value of filterSelect, filter (render) 
      the pokemon based on chosen value  */
   filterSelect.addEventListener('change', () => {
@@ -56,13 +55,9 @@ export const setDataToHTML = (data) => {
   renderPokemon(data)
 }
 
-
-
-
 const renderPokemon = (data) => {
   const container = document.querySelector('.container')
   const listContainer = document.querySelector('.list-container')
-
   /* check if container element exists, and if so, remove children */
   if(container !== null) removeChildren(container)
   /* Remove children of parent before we set it again */
@@ -74,7 +69,6 @@ const renderPokemon = (data) => {
     const allTypes = pokemon.types.map(value => {
       return `<small class="type ${value.type.name}">${value.type.name}</small>`
     }).join(" ")
-
     /* This is the HTML Markup per pokemon that will be inserted */
     const HTMLMarkup =
       `<a href="#${pokemon.name}" class="result">
@@ -89,34 +83,25 @@ const renderPokemon = (data) => {
         </div>
       </li>
     </a>`
-
     /* Insert markup to HTML section */
     listContainer.insertAdjacentHTML('beforeend', HTMLMarkup)
   })
 }
 
-
-
-
-
 export const setDetailedDataToHTML = (pokemon) => {
   const firstSection = document.querySelector('main > section')
-
   /* Remove children of parent before we set it again */
   removeChildren(firstSection)
-
   /* Some pokemon have multiple types, so we map over 
     them to return each as its own element */
   const allTypes = pokemon.types.map(value => {
     return `<small class="type ${value.type.name}">${value.type.name}</small>`
   }).join(" ")
-
   /* Pokemon have multiple stats, so we map over 
      them to return each as its own element */
   const allStats = pokemon.stats.map(value => {
     return `<li class="detail"><small>${value.stat.name}</small><span>${value.base_stat}</span></li>`
   }).join("")
-
   /* This is the HTML Markup that will be inserted */
   const HTMLMarkup =
     `<div class="container">
@@ -149,7 +134,19 @@ export const setDetailedDataToHTML = (pokemon) => {
         </div>
       </div>
     </div>`
+  /* Insert markup to HTML section */
+  firstSection.insertAdjacentHTML('beforeend', HTMLMarkup)
+}
 
+export const renderError = (err) => {
+  const firstSection = document.querySelector('main > section')
+  /* Remove children of parent before we set it again */
+  removeChildren(firstSection)
+  /* This is the HTML Markup that will be inserted */
+  const HTMLMarkup =
+    `<div class="error">
+      <h1>${err}</h1>
+    </div>`
   /* Insert markup to HTML section */
   firstSection.insertAdjacentHTML('beforeend', HTMLMarkup)
 }
