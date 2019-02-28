@@ -132,6 +132,8 @@ export const setAllPokemon = (data) => {
 ```
 
 ## Code structure
+I created two diagrams to show the actors of my code (actor diagram), whom handle functionality in my app, and what happens in my code (interaction diagram).
+
 > * 🛠 [Draw](https://draw.io)
 
 ### Actor diagram
