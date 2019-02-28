@@ -25,7 +25,7 @@
 
 <br>
 
-![preview](week3/public/images/preview.png)
+![preview](assets/preview.png)
 
 <br>
 
@@ -51,7 +51,7 @@ You can find a live demo right here: https://mennauu.github.io/web-app-from-scra
   - [Featured data](#featured-data)
   - [Retrieve](#retrieve)
   - [Cache](#cache)
-- [Structure](#structure)
+- [Code structure](#code-structure)
   - [Actor diagram](#authentication-and-limit)
   - [Interaction diagram](#authentication-and-limit)
 - [Checklist](#checklist)
@@ -131,14 +131,16 @@ export const setAllPokemon = (data) => {
 }
 ```
 
-## Structure
+## Code structure
 > * 🛠 [Draw](https://draw.io)
 
 ### Actor diagram
 
+![Actor diagram](assets/actor-diagram.png)
+
 ### Interaction diagram
 
-![Interaction diagram](week3/public/images/interaction-diagram.png)
+![Interaction diagram](assets/interaction-diagram.png)
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
